@@ -1,0 +1,45 @@
+Zadanie 2 Wnioski z przeprowadzonych testów trzech algorytmów sortujących:
+1. Sortowanie bąbelkowe:
+	Jest to algortm klasy O(N^2). Cechuje go ogromna prostota zapisu. Najszybciej przenoszone są liczby
+	o jak najmniejszej wartości, gdy sortowanie odbywa się w kierunku niemalejącym.
+	Algorym za każdym razem omiata w wewnętrznej pętli całą tablicę, przenosząc po kolei elementy 
+	zaczynając od najmniejszych.
+	Minusy:
+	a) zdarzają się puste przebiegi, gdy elementy są już posortowane, nie  ma zamiany;
+	b) algorytm jest wrażliwy na konfigurację danych, dwie niewiele różniące się tablice mogą
+	wymagać skrajnie różnej ilości przebiegów;
+	Widać po wynikach pomiaru czasu w programie: sortowanie bąbelkowe potrafi być
+	o kilkaset razy dłuższe w czasie niż Quicksort, czy Heapsort.
+	
+2. Quicksort:
+	Jest to algorytm klasy O(N log N). Procedura podzielona jest na dwie części: pierwsza rozdziela elementy
+	względem komórki tablicy pełniącej rolę osi (pivot), a druga część, rekurencyjnie sortuje tablicę, poprzez
+	poskładanie wyników cząstkowych. 
+	Jest to wydajny algorytm, jednak jego wydajność w skranym wypadku może wynieść O(N^2). Jest to związane
+	z wyborem elementu osiowego. Przy dobrym wyborze, tablica zostaje podzielona o tym samym rozmiarze, co daje
+	O(N log N), ponieważ mamy log2N wywołań rekurencyjnych, a każde pracuje na rozmiarze tablicy (N). Algorytm
+	działa najgorzej, gdy wybierzemy element największy lub najmniejszy, wtedy jest wiele wywołań rekurencyjnych.
+	Wyniki pomiaru czasu pokazują ten algorytm jako lidera rankingu: czas poniżej milisekundy.
+	
+3. Heapsort, sotowanie przez kopcowanie:
+	Jest to algorytm klasy O(N log N). Kopiec to drzewo binarne. Jego cechą jest to, że każde elementy poniżej
+	danego węzła, są od niego mniejsze. Algorytm działa następująco: 
+		- ułóż dane w kopiec;
+		- usuń wierzchołek kopca przez zamianę z ostatnim lisciem drzewa;
+		- przywróć kopiec dla pozostałej części kopca;
+		- idź do 2;
+	Przywracanie własności kopca: jeżeli wierzchołek jest większy od dzieci, wyjdź, zamień wierzchołek
+	z większym dzieckiem, przywróć własności kopca w tej części kopca, gdzie nastąpiła zmiana.
+	Wniki pomiaru pokazują, że ten algorytm jest prawie dwkrotnie wolniejszy od quicksort dla elementów losowych,a 
+	a ośmiokrotnie wolniejszy od quicksort w zbiorze uporządkowanym.
+	
+	Wnioski:
+	1. algorytm quicksort wykazuje kolosalną (kilkukrotną) wrażliwość na uporządkowanie danych. Jest to zapewne związane, z 
+	wyborem osi zbioru pivot.
+	2. algorytmy heapsort i sortowanie bąbelkowe, przy niższej niż quicksort wydajności, nie są tak
+	wrażliwe na układ danych, co przejawia się w kilkunasto kilkudziesięciu punktach procentowych różnicy
+	wydajności w zalezności od uporządkowana danych.
+	
+	Zadanie 3.
+	Algorytm sortujący zbór dwuwartościowy ma złożoność O(n), algorytm o liniowej zależności czasu 
+	wykonania od liczby danych przechodzi tylko raz po wszystkich indeksach.
